@@ -1,0 +1,74 @@
+<!--CONTACT HTML FORM-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="CSS/formcss.css"/>
+        <script type="text/javascript" src="JS/jquery-1.10.js"></script>
+        <script src="JS/formscripts.js"></script>
+        <script src="JS/validation.js"></script>
+    </head>
+    <body>
+              
+        <div class="wrapper">
+            <a href="index.html"><img id="logo" src="Images/colour_logo.jpg"/></a>
+		<div id="main" style="padding:50px 0 0 0;">
+		
+		<!-- Form -->
+		<form id="contact-form" action="contact_thanks.html" method="GET" novalidate>
+			<h3>Drop us a line!</h3>
+			<h4>Fill in the form below, and we'll get back to you ASAP!</h4>
+			<div>
+				<label>
+					<span>Name: (required)</span>
+					<input id="name" placeholder="Please enter your name" type="text" tabindex="1" required autofocus>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Email: (required)</span>
+					<input id="email" placeholder="Please enter your email address" type="email" tabindex="2" required>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Phone: (required)
+					<input id="phone" placeholder="Please enter your number" type="tel" tabindex="3" required>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Message: (required)</span>
+					<textarea id="message" placeholder="Tell us about it!" tabindex="5" required></textarea>
+				</label>
+			</div>
+			<div>
+				<button name="submit" type="submit" id="contact-submit">Send Email</button>
+			</div>
+                        
+		</form>
+		<!-- /Form -->
+               // <script type="text/javascript"> 
+                   $("#contact-form").submit(function() {
+                        //Calling sign in validation function//
+                        var validated = validateForm();
+                        
+                        if(validated) {
+                            var name = document.getElementById("name").value;                   
+                            document.cookie="name=" + name;
+                            
+                            return true;
+                        } else {
+                            return false;
+                        }
+                        
+                    });
+               // });  
+                </script>
+                </div>
+        </div>
+		
+	
+    </body>
+</html>

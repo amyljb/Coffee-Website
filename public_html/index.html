@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Amy's Website</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="CSS/newcss.css"/>
+        <link rel="stylesheet" type="text/css" href="CSS/formcss.css"/><!-- interfering with existing css? -->
+        
+        
+        <script type="text/javascript" src="JS/validation.js"></script>
+        <script type="text/javascript" src="JS/jquery-1.10.js"></script>
+        <script type="text/javascript" src="JS/jquery-ui.js"></script>
+        <script type="text/javascript" src="JS/jquery-slides.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+                
+                //WHEN SIGN IN FORM SUBMIT BUTTON IS CLICKED
+                $("#contact-form").submit(function() {
+                    //Calling sign in validation function                   
+                    return validateSignin(); 
+                }); 
+                //when forgotten password button is clicked
+                $("#contact-submit").click(function() {
+                    //user is alerted that option is unavailable
+                   alert("This is currently unavailable!"); 
+                });           
+                //when create new account button is clicked
+                $("#new-account").click(function() {
+                    //user is alerted to check back later
+                   alert("Check back later!"); 
+                }); 
+                
+                //modal popup//
+                $("#dialog-form").dialog({
+                    modal: true,
+                    autoOpen: false,
+                    //when clicked modal will fade in over half a second
+                    show: {
+                        effect: "fade",
+                        duration: 500
+                    },
+                    //on close modal will fade out over 1 second
+                    hide: {
+                        effect: "fade",
+                        duration: 1000
+                    }
+                });
+                //when login button is clicked modal dialog box will open
+                $("#login").click(function() {
+                    $("#dialog-form").dialog("open");
+                });
+            });
+            //SLIDESHOW
+                  //NEW ARRAY CONTAINING SLIDESHOW IMAGES
+            var slides = [];
+            slides[0] = "Images/tri_cup.jpg";
+            slides[1] = "Images/cup_design1.png";
+            slides[2] = "Images/cup_design2.png";
+            var i = 0;
+            //FUNCTION TO SWAP SLIDESHOW IMAGES
+            function swapImage() {
+                //change img source//
+                document.slide.src = slides[i];
+                if (i < slides.length - 1) {
+                    i++;
+                } else {
+                    i = 0;
+                }
+                //setTimeout will repeat the function swapImage after 3000 milliseconds
+                //resulting in a looping slideshow
+                setTimeout("swapImage()", 3000);
+            }
+            //when window loads function swapImage is called
+            window.onload = swapImage;
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="header">
+                <!--LOGIN BUTTON-->
+                <a id="login">sign in</a>
+                <!--LOGO-->
+                <img id="logo" src="Images/colour_logo.jpg"/>
+                <!--NAVIGATION PANEL IN LIST-->
+                <div class="header">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about_page.html">ABOUT US</a></li>
+                        <li><a href="new.html">WHAT'S NEW</a></li>
+                        <li><a href="treats.html">TREATS</a></li>
+                        <li><a href="club.html">COFFEE CLUB</a></li>
+                        <li><a href="say_hello.html">SAY HELLO!</a></li>
+                    </ul>
+                </div>
+                <div id="dialog-form" style="border:solid 1px black;">
+                    <div id="main">
+
+                        
+                        <!-- Form -->
+                        <!--validateForm-->
+                        <!--FORM OPENS ON CLICK OF sign in BUTTON-->
+                        <form id="contact-form" action="submit.html" method="GET" novalidate>
+                            <h3>Sign in!</h3>
+                            <div>
+                                <label>
+                                    <span>Email: (required) </span>
+                                    <input id="email" placeholder="Please enter your email address" type="email" tabindex="1" autofocus>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <span>Password: (required) </span>
+                                    <input id="password" placeholder="Please enter your password" type="password" tabindex="2" >
+                                </label>
+                            </div>
+                            <div>
+                                <!--SIGN IN AND FORGOTTEN PASSWORD BUTTONS-->
+				<button name="submit" type="submit" id="signin-submit">Sign in</button>
+			</div>
+                            <div>
+                                <button type="button" id="contact-submit">Forgotten your password?</button>
+                                <button type="button" id="new-account">Create Account</button>
+			</div>
+                        </form>
+                        <!-- /Form -->
+                    </div>
+                </div>
+            </div>
+
+        <div>
+            <!--LAYOUT OF FIRST LINE OF IMAGES AND SLIDESHOW-LINK TO NEW PRODUCTS-->
+                <img class="middle" id="yellowleft" src="Images/yellow_left.png" alt="banner"/>
+                <a href="new.html"><img title="New Products" id="slideimage" class="middle" height="325" name="slide" src="Images/tri_cup.jpg" width="300" alt="cup image" /></a>
+                <img class="middle" id="yellowmid" src="Images/yellow_mid.png" alt="pic"/>
+                <img class="middle" id="rightmid" src="Images/right_mid.png" alt="rightpic"/>
+            </div>    
+            <!--BOTTOM IMAGES (blue)- LINKED TO ABOUT PAGE-->
+            <div id="bottomrow">
+                <a href="about_page.html"><img class="row" id="beanhands" src="Images/beans_hands.jpg" alt="beans"/></a>
+                <img class="row" id="blueone" src="Images/blue_1.png" alt="blue1"/>
+                <a href="about_page.html"><img class="row" id="cup" src="Images/coffee_cup.jpg" alt="cup"/></a>
+                <img class="row" id="bluetwo" src="Images/blue_2.png" alt="blue2"/>
+            </div>
+            <!--FOOTER TEXT-->
+            <div id="footer">
+                <p class="footertext"><span><strong>FIND US!</strong></span><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                    Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                    Praesent mauris. Fusce nec tellus sed augue semper porta. 
+                </p>
+                <p class="footertext"><span><strong>CONTACT US!</strong></span><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                    Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                    Praesent mauris. Fusce nec tellus sed augue semper porta.                 
+                </p>
+                <p class="footertext"><span><strong>OTHER</strong></span><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                    Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+                    Praesent mauris. Fusce nec tellus sed augue semper porta. 
+                </p>    
+                <!--SOCIAL ICONS-->
+                <div id="social">
+                    <a href="http://www.facebook.com"><img class="icons" src="Images/facebook.png"/></a>
+                    <a href="http://www.twitter.com"><img class="icons" src="Images/twitter.png"/></a>
+                    <a href="http://www.youtube.com"><img class="icons" src="Images/youtube.png"/></a>
+                    <a href="http://www.linkedin.com"><img class="icons" src="Images/linkedin.png"/></a>
+                </div>
+
+            </div>
+        </div>   
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!--
+THIS PAGE LOADS AFTER A USER FILLS IN THE CONTACT PAGE AND HITS SUBMIT
+A COOKIE CONTAINING THE USERNAME FROM THE CONTACT FORM IS RETRIEVED AND
+ADDED TO THE END OF THE THANK YOU MESSAGE
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>THANKS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel='stylesheet' type='text/css' href='CSS/newcss.css' />
+        <script type="text/javascript">
+            window.onload = function() {
+                //retrieves thank you message from below
+                var thankYou = document.getElementById("thankYou");
+                //retrieves username from cookie
+                var userName = getCookie("name");
+                thankYou.innerHTML = thankYou.innerHTML + " " + userName + "!";
+            }
+            //function from w3schools
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                //from w3schools
+                for(var i=0; i<ca.length; i++) {
+                  var c = ca[i].trim();
+                  if (c.indexOf(name)==0) { 
+                      return c.substring(name.length,c.length);
+                  }
+                }
+                return "";
+            }
+        </script>
+    </head>
+    <body>
+        <!--logo image and homepage link-->
+        <a href='index.html'><img id="logo" src="Images/colour_logo.jpg"/></a>
+        <!--users will receive thank you message after submitting contact form
+        id makes it possible to retrieve content(above)-->
+        <div class='thanks' id='thankYou'>Thanks for your message</div>
+        <div class='thanks'>We'll get back to you soon!</div>
+         
+        
+    </body>
+</html>
